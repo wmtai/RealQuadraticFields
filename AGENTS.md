@@ -31,7 +31,28 @@ project as a reference for module organization and public interfaces.
 
 ## Current checkpoint
 
-- Stage: setup complete and build verified; exercise 1 has not been assigned.
-- Verification passed: `lake build --wfail RealQuadraticFields RealQuadraticFieldsTests`.
-- Next conversational action: wait for the user's `ok`, then
-  present exercise 1 only.
+- Stage: exercise 1 implemented and reviewed; public-interface examples added
+  at the user's request. Awaiting permission to present exercise 2.
+- Last verification: exercise 1 and its examples passed
+  `lake build --wfail RealQuadraticFields RealQuadraticFieldsTests`.
+- Review: all assigned results are present, with no unfinished proofs or added
+  axioms. Client examples cover coordinate equality, constructor evaluation
+  (including fractional coordinates), irrationality, coefficient uniqueness,
+  and injectivity for radicands 2, 3, and 5.
+- Next `ok`: present exercise 2 only.
+
+## Assigned exercise 1: Rational coordinates and irrationality
+
+- Work in `RealQuadraticFields/Basic.lean` within namespace `RealQuadraticFields`.
+- Define `Quad (d : ℕ)` with rational fields `re` and `im`. Define its real
+  evaluation as `re + im * Real.sqrt d`, with explicit rational-to-real casts.
+- Keep the coordinate type and its evaluation available for every natural `d`;
+  put `Squarefree d` and `1 < d` hypotheses on the theorems that need them.
+- Prove coordinate extensionality and an evaluation formula for a constructor.
+- For squarefree `d > 1`, prove no rational square equals `d`, and prove
+  `Irrational (Real.sqrt (d : ℝ))`.
+- Prove `a + b * sqrt d = 0` iff both rational coefficients vanish, uniqueness
+  of rational coordinates, and injectivity of `Quad.eval` under those hypotheses.
+- Add public-import examples for `d = 2, 3, 5` using the new lemmas.
+- Arithmetic operations, ring instances, and field instances belong to later
+  exercises; leave their implementation for those assignments.
