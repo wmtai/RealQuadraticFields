@@ -1,6 +1,7 @@
 module
 
 public import RealQuadraticFields.Basic
+public import RealQuadraticFields.Arithmetic
 
 /-!
 # RealQuadraticFields

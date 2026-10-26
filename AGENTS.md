@@ -31,15 +31,15 @@ project as a reference for module organization and public interfaces.
 
 ## Current checkpoint
 
-- Stage: exercise 1 implemented and reviewed; public-interface examples added
-  at the user's request. Awaiting permission to present exercise 2.
+- Stage: exercise 1 complete; exercise 2 assigned and awaiting implementation.
 - Last verification: exercise 1 and its examples passed
   `lake build --wfail RealQuadraticFields RealQuadraticFieldsTests`.
 - Review: all assigned results are present, with no unfinished proofs or added
   axioms. Client examples cover coordinate equality, constructor evaluation
   (including fractional coordinates), irrationality, coefficient uniqueness,
   and injectivity for radicands 2, 3, and 5.
-- Next `ok`: present exercise 2 only.
+- Next `ok`: review exercise 2 and give feedback, then wait for another `ok`
+  before presenting exercise 3.
 
 ## Assigned exercise 1: Rational coordinates and irrationality
 
@@ -56,3 +56,22 @@ project as a reference for module organization and public interfaces.
 - Add public-import examples for `d = 2, 3, 5` using the new lemmas.
 - Arithmetic operations, ring instances, and field instances belong to later
   exercises; leave their implementation for those assignments.
+
+## Assigned exercise 2: Arithmetic and the algebra structure
+
+- Work in `RealQuadraticFields/Arithmetic.lean`, which imports `Basic` and is
+  reexported from the public root. Only the empty module scaffold is provided.
+- All definitions and results in this exercise work for every natural `d`.
+- Define zero, one, addition, negation, multiplication, the rational embedding,
+  and rational scalar multiplication on the existing coordinate type `Quad d`.
+- Construct `CommRing (Quad d)` and `Algebra ℚ (Quad d)` instances with the
+  rational algebra map and scalar action agreeing with the coordinate definitions.
+- Prove coordinate formulas for the operations, rational embedding, and scalar
+  action; mark suitable reduction lemmas with `@[simp]`.
+- Define `Quad.sqrtD d` to represent the distinguished square root. Prove its
+  square is `(d : Quad d)`, and every element decomposes as its rational real
+  coordinate plus its rational imaginary coordinate times `Quad.sqrtD d`.
+- Prove evaluation preserves the operations, the rational embedding, and scalar
+  multiplication. Package it as `Quad.evalHom (d : ℕ) : Quad d →ₐ[ℚ] ℝ`.
+- Add public-import examples for arithmetic with radicands 2, 3, and 5, including
+  fractional coordinates or rational scalar multiplication.
